@@ -1,4 +1,4 @@
-const ComponentAnalyzer = require("./ComponentAnalyzer");
+const ComponentAnalyzer = require("./ComponentAnalyzer.js");
 
 const deepWalk = function (analyzer, rootPath) {
   const rootDep = analyzer.getDependencies(rootPath);

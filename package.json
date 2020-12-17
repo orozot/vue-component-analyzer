@@ -9,7 +9,7 @@
   ],
   "main": "src/index.js",
   "bin": {
-    "vue-component-dependencies": "src/index.js"
+    "vue-component-dependencies": "bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
