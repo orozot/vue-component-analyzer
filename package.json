@@ -1,5 +1,5 @@
 {
-  "name": "vue-component-analyzer",
+  "name": "vue-component-dependencies",
   "version": "1.0.0",
   "description": "Analyze Vue components dependencies",
   "files": [
@@ -9,7 +9,7 @@
   ],
   "main": "src/index.js",
   "bin": {
-    "vue-component-analyzer": "src/index.js"
+    "vue-component-dependencies": "src/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -21,9 +21,7 @@ class ComponentAnalyzer {
   isIgnoreModule (componentPath) {
     const hasIgnoreModule = this.options.ignoreModule.some(moduleName => {
       const regex = new RegExp(`^(${moduleName})(\/\S+|$)`);
-      if (regex.test(componentPath)) {
-        return true;
-      }
+      return regex.test(componentPath)
     });
 
     return hasIgnoreModule || componentPath.includes("node_modules");
