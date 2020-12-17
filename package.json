@@ -1,6 +1,6 @@
 {
   "name": "vue-component-dependencies",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Analyze Vue components dependencies",
   "files": [
     "README.md",
@@ -14,6 +14,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c rollup.config.js"
+  },
+  "keywords": [
+    "Vue.js",
+    "Vue",
+    "component",
+    "analyze",
+    "tree",
+    "dependency"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orozot/vue-component-analyzer.git"
   },
   "dependencies": {
     "@babel/traverse": "^7.12.9",
