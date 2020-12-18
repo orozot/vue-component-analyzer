@@ -40,7 +40,7 @@ const initProcess = function (filePath, ignoreModule) {
     const dependencies = deepWalk(analyzer, pagePath);
     routePage[pagePath] = Object.values(dependencies)[0];
   });
-  console.dir(routePage, { depth: null });
+  console.dir(rootDep, { depth: null });
 };
 
 module.exports = initProcess;

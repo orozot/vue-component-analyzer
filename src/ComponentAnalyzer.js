@@ -1,7 +1,7 @@
 const compiler = require("vue-template-compiler");
 const fs = require("fs");
 const path = require("path");
-const babylon = require("babylon");
+const babylon = require("@babel/parser");
 const traverse = require("@babel/traverse").default;
 // const _ = require("lodash");
 const pkg = require(path.resolve("./package.json"));
@@ -21,7 +21,7 @@ class ComponentAnalyzer {
   isIgnoreModule (componentPath) {
     const hasIgnoreModule = this.options.ignoreModule.some(moduleName => {
       const regex = new RegExp(`^(${moduleName})(\/\S+|$)`);
-      return regex.test(componentPath)
+      return regex.test(componentPath);
     });
 
     return hasIgnoreModule || componentPath.includes("node_modules");
@@ -50,7 +50,8 @@ class ComponentAnalyzer {
 
       if (scriptContent) {
         ast = babylon.parse(scriptContent, {
-          sourceType: "module"
+          sourceType: "module",
+          plugins: ["jsx"]
         });
       }
     });
@@ -58,12 +59,11 @@ class ComponentAnalyzer {
   }
 
   checkModuleExist (fullPath, success, errHandler) {
-    try {
-      fs.accessSync(fullPath, fs.constants.F_OK);
+    if (fs.existsSync(fullPath)) {
       success();
-    } catch (err) {
+    } else {
       if (errHandler) {
-        errHandler(err);
+        errHandler(fullPath);
       } else {
         console.error(`Module ${fullPath} does not exist`);
       }
@@ -72,6 +72,7 @@ class ComponentAnalyzer {
 
   formatPath (nodePath, direction = this.root, type = "vue") {
     let absolutePath = nodePath.replace("@", `${this.root}/src`);
+    absolutePath = absolutePath.replace(/^components\//, `${this.root}/src/components/`);
     const ignorable = this.isIgnoreModule(absolutePath);
 
     if (!ignorable) {

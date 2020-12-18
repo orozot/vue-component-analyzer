@@ -28,8 +28,8 @@
     "url": "git+https://github.com/orozot/vue-component-analyzer.git"
   },
   "dependencies": {
+    "@babel/parser": "^7.12.11",
     "@babel/traverse": "^7.12.9",
-    "babylon": "^6.18.0",
     "commander": "^6.2.1",
     "lodash": "^4.17.20",
     "vue-template-compiler": "^2.6.12"
